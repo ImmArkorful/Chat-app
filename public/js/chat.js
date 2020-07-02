@@ -32,7 +32,6 @@ const autoscroll = () => {
 }
 
 socket.on('locationMessage', (url) => {
-    console.log(url);
     const html = Mustache.render(locationMessageTemplate, {
         username: url.username,
         url: url.url,
@@ -43,10 +42,7 @@ socket.on('locationMessage', (url) => {
 })
 
 socket.on('message', (message) => {
-    console.log(message);
-    if(message.text === ""){
-        return alert('Message required')
-    }
+    
     const html = Mustache.render(messageTemplate, {
         username: message.username,
         message: message.text,

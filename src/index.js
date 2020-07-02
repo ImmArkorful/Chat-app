@@ -42,7 +42,10 @@ io.on('connection', (socket) => {
         const user = getUser(socket.id);
         
         const filter = new Filter();
-        
+        if(!text){
+            error = new Error('Message required')
+            return callback('Message required')
+        }
         if(filter.isProfane(text)){         
             return callback('Profanity not allowed')
             
